@@ -1,0 +1,26 @@
+{
+  "name": "helpdesk",
+  "description": "",
+  "main": "",
+  "authors": [
+    "zuffik <kristian.zuffa@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "v4.0.0-alpha.6",
+    "jquery": "^3.2.1",
+    "datatables.net": "^1.10.15",
+    "datatables.net-bs4": "^3.2.2",
+    "components-font-awesome": "^4.7.0",
+    "tinymce": "^4.6.5",
+    "bootstrap-colorpicker": "^2.5.1"
+  }
+}

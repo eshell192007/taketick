@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "module": "amd",
+    "target": "es5",
+    "sourceMap": true,
+    "removeComments": true,
+    "outFile": "public/js/app.js"
+  },
+  "exclude": [
+    "node_modules"
+  ],
+  "include": [
+    "resources/assets/ts/**/*",
+    "resources/assets/ts/app.ts"
+  ]
+}

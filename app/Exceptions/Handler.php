@@ -5,6 +5,8 @@ namespace Helpdesk\Exceptions;
 use Exception;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Support\Facades\Auth;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class Handler extends ExceptionHandler
 {
@@ -44,6 +46,18 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        if($request->wantsJson()) {
+            return response()->json([
+                'errorMsg' => $exception->getMessage(),
+                'errorCode' => $exception->getCode(),
+                'errorTrace' => $exception->getTrace()
+            ])->setStatusCode(500);
+        }
+        if($exception instanceof NotFoundHttpException) {
+            return response()->view('error.404', [
+                'isLogged' => !empty(Auth::id())
+            ]);
+        }
         return parent::render($request, $exception);
     }
 

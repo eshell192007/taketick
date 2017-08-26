@@ -11,3 +11,24 @@
 |
 */
 
+use Illuminate\Support\Facades\Route;
+
+Route::get('/', 'FrontController@index');
+
+Route::group(['prefix' => 'user'], function() {
+    $controller = 'UserController';
+    Route::post('login', "$controller@login");
+});
+
+Route::group(['prefix' => 'ticket'], function() {
+    Route::get('{id}', "FrontController@ticket")->where('id', '\d+');
+    Route::get('add', "FrontController@ticketForm");
+});
+
+Route::group(['prefix' => 'settings'], function() {
+    Route::get('', "FrontController@showSettings");
+});
+
+Route::get('{slug}', function() {
+    throw new \Symfony\Component\HttpKernel\Exception\NotFoundHttpException();
+});
