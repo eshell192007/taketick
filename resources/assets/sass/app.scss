@@ -21,3 +21,22 @@
 .table-hover tbody tr {
   cursor: pointer;
 }
+
+.btn {
+  cursor: pointer;
+  &#{&}-transparent {
+    background-color: transparent;
+    border: none;
+    outline:none;
+    padding: 0;
+  }
+}
+
+.list-group-item-default {
+  background-color: #eee;
+}
+
+.scrollbar-content {
+  overflow-y: auto;
+  max-height: 400px;
+}

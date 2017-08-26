@@ -1,42 +1,22 @@
 #!/usr/bin/env php
 <?php
 
-use Zend\Mail\Message;
-/*
-EXMAPLE MAIL BODY:
+use PhpMimeMailParser\Parser;
+use TakeTick\TicketCreator;
 
-From david@localhost  Thu Jan  5 10:04:48 2012
-Received: from [127.0.0.1] (localhost.localdomain [127.0.0.1])
-        by DavidUbuntu (Postfix) with ESMTPS id 740AD380597
-        for <david@localhost>; Thu,  5 Jan 2012 10:04:48 +0100 (CET)
-Message-ID: <1325754288.4989.6.camel@DavidUbuntu>
-Subject: my title
-From: David Negrier <david@localhost>
-To: david@localhost
-Date: Thu, 05 Jan 2012 10:04:48 +0100
-Content-Type: text/plain
-X-Mailer: Evolution 3.2.0-
-Content-Transfer-Encoding: 7bit
-Mime-Version: 1.0
-
-my mail content
- */
 include __DIR__ . '/../bootstrap/autoload.php';
 include __DIR__ . '/../bootstrap/app.php';
-$sender = $argv[1];
-$size = $argv[2];
-$receiver = $argv[3];
+$kernel = $app->make(Illuminate\Contracts\Http\Kernel::class);
+$response = $kernel->handle(
+    $request = Illuminate\Http\Request::capture()
+);
 $mail = fopen('php://stdin', 'r');
-$body = '';
-while (!feof($mail)) {
-    $body .= fread($mail, 1024);
-}
-fclose($mail);
-$email = Message::fromString($body);
-print_r([
-    'sender' => $sender,
-    'receiver' => $receiver,
-    'size' => $size,
-    'email' => $email
-]);
+$parser = new Parser();
+$parser->setStream($mail);
+$sender = $parser->getAddresses('from')[0]['address'];
+$email = $parser->getMessageBody();
+$subject = $parser->getHeader('subject');
+$creator = new TicketCreator();
+$creator->create($sender, $subject, $email);
+die;
 ?>

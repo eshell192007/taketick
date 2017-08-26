@@ -1,6 +1,6 @@
 <?php
 
-namespace Helpdesk\Exceptions;
+namespace TakeTick\Exceptions;
 
 use Exception;
 use Illuminate\Auth\AuthenticationException;
@@ -50,7 +50,8 @@ class Handler extends ExceptionHandler
             return response()->json([
                 'errorMsg' => $exception->getMessage(),
                 'errorCode' => $exception->getCode(),
-                'errorTrace' => $exception->getTrace()
+                'errorTrace' => $exception->getTrace(),
+                'errorType' => get_class($exception)
             ])->setStatusCode(500);
         }
         if($exception instanceof NotFoundHttpException) {

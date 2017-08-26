@@ -1,6 +1,6 @@
 <?php
 
-namespace Helpdesk\Providers;
+namespace TakeTick\Providers;
 
 use Illuminate\Support\ServiceProvider;
 

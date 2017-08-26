@@ -67,7 +67,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => Helpdesk\User::class,
+            'model' => TakeTick\User::class,
         ],
 
         // 'users' => [

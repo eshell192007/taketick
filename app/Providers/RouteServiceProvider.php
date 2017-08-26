@@ -1,6 +1,6 @@
 <?php
 
-namespace Helpdesk\Providers;
+namespace TakeTick\Providers;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
@@ -14,7 +14,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    protected $namespace = 'Helpdesk\Http\Controllers';
+    protected $namespace = 'TakeTick\Http\Controllers';
 
     /**
      * Define your route model bindings, pattern filters, etc.

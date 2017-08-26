@@ -1,6 +1,6 @@
 <?php
 
-namespace Helpdesk;
+namespace TakeTick;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;

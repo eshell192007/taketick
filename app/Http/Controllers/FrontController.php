@@ -6,13 +6,14 @@
  * Time: 10:53
  */
 
-namespace Helpdesk\Http\Controllers;
+namespace TakeTick\Http\Controllers;
 
-use Helpdesk\Priority;
-use Helpdesk\Status;
-use Helpdesk\Ticket;
-use Helpdesk\Type;
-use Helpdesk\User;
+use Illuminate\Support\Facades\DB;
+use TakeTick\Priority;
+use TakeTick\Status;
+use TakeTick\Ticket;
+use TakeTick\Type;
+use TakeTick\User;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -21,21 +22,30 @@ class FrontController extends Controller
 {
     public function index()
     {
+        $tickets = Ticket::with(['status', 'type', 'priority', 'assignee'])->whereNotIn('id_status', function (Builder $resource) {
+            $resource->select('id_status')->from('statuses')->where('displayed', 0);
+        })->get();
         return view(empty(Auth::id()) ? 'templates.index' : 'templates.logged', [
-            'tickets' => Ticket::with(['status', 'type', 'priority', 'fromUser', 'assignee'])->whereNotIn('id_status', function(Builder $resource) {
-                $resource->select('id_status')->from('statuses')->where('displayed', 0);
-            })->get()
+            'tickets' => $tickets
         ]);
     }
 
     public function ticket($id)
     {
-        $ticket = Ticket::with(['status', 'type', 'priority', 'fromUser', 'assignee'])->where('id_ticket', $id)->get();
-        if(empty($ticket)) {
+        $ticket = Ticket::with(['status', 'type', 'priority', 'assignee'])->where('id_ticket', $id)->get();
+        if (empty($ticket)) {
             throw new NotFoundHttpException();
         }
+        $users = User::all();
+        $types = Type::all();
+        $priorities = Priority::all();
+        $statuses = Status::all();
         return view('templates.ticket.view', [
-            'ticket' => $ticket[0]
+            'ticket' => $ticket[0],
+            'users' => $users,
+            'priorities' => $priorities,
+            'types' => $types,
+            'statuses' => $statuses,
         ]);
     }
 

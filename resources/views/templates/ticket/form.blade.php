@@ -14,6 +14,7 @@
 @endsection
 @section('main')
   <form action="/ticket/add" method="post" class="container-fluid form-ajax">
+    <input type="hidden" name="_token" value="{{ csrf_token() }}">
     <h2><?php echo _('Add a ticket') ?></h2>
     <div class="alert alert-danger" style="display: none;"></div>
     <div class="row">
@@ -27,6 +28,7 @@
             <div class="form-group">
               <label for="assignee" class="label"><?php echo _('Assign to') ?></label>
               <select name="assignee" id="assignee" class="form-control">
+                <option value=""><?php echo _('Nobody') ?></option>
                   <?php foreach($users as $user): ?>
                 <option value="{{ $user->id }}">{{ $user->name }}</option>
                   <?php endforeach; ?>
@@ -35,8 +37,9 @@
             <div class="form-group">
               <label for="priority" class="label"><?php echo _('Priority') ?></label>
               <select name="priority" id="priority" class="form-control">
+                <option value=""><?php echo _('Unknown') ?></option>
                   <?php foreach($priorities as $priority): ?>
-                <option value="{{ $priority->id }}">{{ $priority->name }}</option>
+                <option value="{{ $priority->id_priority }}">{{ $priority->name }}</option>
                   <?php endforeach; ?>
               </select>
             </div>
@@ -45,16 +48,18 @@
             <div class="form-group">
               <label for="status" class="label"><?php echo _('Status') ?></label>
               <select name="status" id="status" class="form-control">
+                <option value=""><?php echo _('Unknown') ?></option>
                   <?php foreach($statuses as $status): ?>
-                <option value="{{ $status->id }}">{{ $status->name }}</option>
+                <option value="{{ $status->id_status }}">{{ $status->name }}</option>
                   <?php endforeach; ?>
               </select>
             </div>
             <div class="form-group">
               <label for="type" class="label"><?php echo _('Type') ?></label>
               <select name="type" id="type" class="form-control">
+                <option value=""><?php echo _('Unknown') ?></option>
                   <?php foreach($types as $type): ?>
-                <option value="{{ $type->id }}">{{ $type->name }}</option>
+                <option value="{{ $type->id_type }}">{{ $type->name }}</option>
                   <?php endforeach; ?>
               </select>
             </div>

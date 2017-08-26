@@ -6,9 +6,9 @@
  * Time: 11:25
  */
 
-namespace Helpdesk\Http\Controllers;
+namespace TakeTick\Http\Controllers;
 
-use Helpdesk\User;
+use TakeTick\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;

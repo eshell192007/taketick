@@ -1,5 +1,5 @@
 <?php
-/** @var $ticket \Helpdesk\Ticket */
+/** @var $ticket \TakeTick\Ticket */
 ?>
 @extends('logged')
 @section('main')
@@ -18,6 +18,7 @@
               <td><?php echo _('Priority') ?></td>
               <td><?php echo _('From') ?></td>
               <td><?php echo _('Assigned to') ?></td>
+              <td><?php echo _('Created at') ?></td>
             </tr>
             </thead>
             <tbody>
@@ -56,8 +57,8 @@
                   @endif
                 </td>
                 <td>
-                  @if(!empty($ticket->fromUser))
-                    <a href="/user/<?php echo $ticket->fromUser->id ?>"><?php echo $ticket->fromUser->name ?></a>
+                  @if(!empty($ticket->messages[0]->fromUser))
+                    <a href="/user/<?php echo $ticket->messages[0]->fromUser->id ?>"><?php echo $ticket->messages[0]->fromUser->name ?></a>
                         <?php elseif(!empty($ticket->email)): ?>
                     <a href="mailto:<?php echo $ticket->email ?>"><?php echo $ticket->email ?></a>
                   @else
@@ -71,6 +72,7 @@
                     <small><?php echo _('Unknown') ?></small>
                   @endif
                 </td>
+                <td><?php echo date('d.m.Y H:i', strtotime($ticket->created_at)) ?></td>
               </tr>
             @empty
               <tr>

@@ -1,6 +1,6 @@
 <?php
 
-namespace Helpdesk\Providers;
+namespace TakeTick\Providers;
 
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
@@ -13,7 +13,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'Helpdesk\Model' => 'Helpdesk\Policies\ModelPolicy',
+        'TakeTick\Model' => 'TakeTick\Policies\ModelPolicy',
     ];
 
     /**

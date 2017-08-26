@@ -1,6 +1,6 @@
 <?php
 
-namespace Helpdesk;
+namespace TakeTick;
 
 use Illuminate\Database\Eloquent\Model;
 

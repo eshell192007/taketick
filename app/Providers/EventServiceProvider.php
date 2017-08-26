@@ -1,6 +1,6 @@
 <?php
 
-namespace Helpdesk\Providers;
+namespace TakeTick\Providers;
 
 use Illuminate\Support\Facades\Event;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -13,8 +13,8 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'Helpdesk\Events\Event' => [
-            'Helpdesk\Listeners\EventListener',
+        'TakeTick\Events\Event' => [
+            'TakeTick\Listeners\EventListener',
         ],
     ];
 

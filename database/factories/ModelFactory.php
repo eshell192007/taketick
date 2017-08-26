@@ -12,7 +12,7 @@
 */
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-$factory->define(Helpdesk\User::class, function (Faker\Generator $faker) {
+$factory->define(TakeTick\User::class, function (Faker\Generator $faker) {
     static $password;
 
     return [

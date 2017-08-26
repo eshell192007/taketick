@@ -1,6 +1,6 @@
 <?php
 
-namespace Helpdesk\Http\Middleware;
+namespace TakeTick\Http\Middleware;
 
 use Illuminate\Foundation\Http\Middleware\TrimStrings as BaseTrimmer;
 

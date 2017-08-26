@@ -171,11 +171,11 @@ return [
         /*
          * Application Service Providers...
          */
-        Helpdesk\Providers\AppServiceProvider::class,
-        Helpdesk\Providers\AuthServiceProvider::class,
-        // Helpdesk\Providers\BroadcastServiceProvider::class,
-        Helpdesk\Providers\EventServiceProvider::class,
-        Helpdesk\Providers\RouteServiceProvider::class,
+        TakeTick\Providers\AppServiceProvider::class,
+        TakeTick\Providers\AuthServiceProvider::class,
+        // TakeTick\Providers\BroadcastServiceProvider::class,
+        TakeTick\Providers\EventServiceProvider::class,
+        TakeTick\Providers\RouteServiceProvider::class,
 
     ],
 
@@ -227,5 +227,9 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
     ],
+
+    'notifyEmails' => [
+        'kristian.zuffa@gmail.com'
+    ]
 
 ];

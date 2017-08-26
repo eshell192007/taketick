@@ -1,6 +1,6 @@
 <?php
 
-namespace Helpdesk\Console;
+namespace TakeTick\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;

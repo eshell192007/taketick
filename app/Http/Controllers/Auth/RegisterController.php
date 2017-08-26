@@ -1,9 +1,9 @@
 <?php
 
-namespace Helpdesk\Http\Controllers\Auth;
+namespace TakeTick\Http\Controllers\Auth;
 
-use Helpdesk\User;
-use Helpdesk\Http\Controllers\Controller;
+use TakeTick\User;
+use TakeTick\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
@@ -58,7 +58,7 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \Helpdesk\User
+     * @return \TakeTick\User
      */
     protected function create(array $data)
     {

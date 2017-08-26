@@ -11,6 +11,6 @@ class app {
 }
 
 if(typeof $ == 'undefined') {
-    function $(param: any) {}
+    function $(param: any, param1?: any) {}
 }
-new app($(document), $(window), {}).run();
+new app($(document), $(window), window.config).run();

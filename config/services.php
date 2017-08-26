@@ -30,7 +30,7 @@ return [
     ],
 
     'stripe' => [
-        'model' => Helpdesk\User::class,
+        'model' => TakeTick\User::class,
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
     ],

@@ -1,6 +1,6 @@
 <?php
 
-namespace Helpdesk\Http\Middleware;
+namespace TakeTick\Http\Middleware;
 
 use Illuminate\Cookie\Middleware\EncryptCookies as BaseEncrypter;
 

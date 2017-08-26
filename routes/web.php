@@ -21,12 +21,19 @@ Route::group(['prefix' => 'user'], function() {
 });
 
 Route::group(['prefix' => 'ticket'], function() {
-    Route::get('{id}', "FrontController@ticket")->where('id', '\d+');
+    $controller = 'TicketController';
+    Route::get('{id}', "FrontController@ticket")->where('id', '\d+')->name('ticket.detail');
     Route::get('add', "FrontController@ticketForm");
+    Route::post('add', "$controller@add");
+    Route::post('{id}/reply', "$controller@reply")->where('id', '\d+');
+    Route::post('{id}/edit', "$controller@edit")->where('id', '\d+');
 });
 
 Route::group(['prefix' => 'settings'], function() {
+    $controller = 'SettingsController';
     Route::get('', "FrontController@showSettings");
+    Route::post('{type}/{id}/save', "$controller@save")->where('type', '(priority|status|type)')->where('id', '\d+');
+    Route::delete('{type}/{id}', "$controller@delete")->where('type', '(priority|status|type)')->where('id', '\d+');
 });
 
 Route::get('{slug}', function() {

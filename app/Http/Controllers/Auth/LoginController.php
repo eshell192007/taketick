@@ -1,8 +1,8 @@
 <?php
 
-namespace Helpdesk\Http\Controllers\Auth;
+namespace TakeTick\Http\Controllers\Auth;
 
-use Helpdesk\Http\Controllers\Controller;
+use TakeTick\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
