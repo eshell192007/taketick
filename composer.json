@@ -2,7 +2,7 @@
     "name": "zuffik/helpdesk",
     "description": "The knowenger helpdesk.",
     "keywords": ["framework", "laravel"],
-    "license": "GNU",
+    "license": "MIT",
     "type": "project",
     "require": {
         "php": ">=5.6.4",
@@ -13,6 +13,7 @@
         "php-mime-mail-parser/php-mime-mail-parser": "^2.9"
     },
     "require-dev": {
+        "codacy/coverage": "^1.2",
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",
         "phpunit/phpunit": "~5.7"
